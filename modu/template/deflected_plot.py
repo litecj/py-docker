@@ -29,13 +29,13 @@ class ChangedTemperatureONMyBirthday () :
         self.extract_date_data()
 
     def read_data(self):
-        data = csv.reader(open('../data/unit_seoul.csv', encoding='utf-8'))
+        data = csv.reader(open('../data/seoul.csv','rt', encoding='utf-8'))
         next(data)
         #print([i[-1] for i in data])
         self.data = data
 
     def show_highest_temperature(self):
-        #print([i[-1] for i in self.data])
+        # print([i[-1] for i in self.data])
         return [i[-1] for i in self.data]
 
     def save_data_to_list(self):
