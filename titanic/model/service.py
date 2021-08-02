@@ -1,42 +1,46 @@
-from titanic.model.dataset import Dataset
 import pandas as pd
 
-class Service (object) :
+from titanic.model.dataset import Dataset
+
+class TitanicService(object):
 
     dataset = Dataset()
 
-    def new_model(self, payload: str) -> object:
-        this = self.dataset
-        this.context = './data/'
-        this.fname = payload
-        return pd.read_csv(this.context + this.fname)
+    def new_model(self,payload) -> object:
+        # this = self.dataset
+        # this.context = '/app/'
+        # this.fname = payload
+        return pd.read_csv(f"/data/{payload}.csv")
 
-    def create_train(this) -> {}:
-        return this
+    def count_survived_dead(self, ):
+        return []
 
-    def create_label(this) -> {}:
-        return this
-
-    def drop_feature(this,*feature) ->(object):
-        return this
-
-    def embarked_nominal(this)->(object):
-        return this
-
-    def fare_oridnal(this)->(object):
-        return this
-
-    def title_nominal(this)->(object):
-        return this
-
-    def gender_nirminal(this)->(object):
-        return this
-
-    def age_ordinal(this)->(object):
-        return this
-
-    def create_k_fold(this) -> {}:
+    def create_train(self):
         return None
 
-    def accuracy_by_classfier(this) -> str:
-        return ""
+    def create_label(self):
+        return None
+
+    def drop_feature(self, *feature):
+        return None
+
+    def embarked_nominal(self):
+        return None
+
+    def fare_oridnal(self):
+        return None
+
+    def title_nominal(self):
+        return None
+
+    def gender_norminal(self):
+        return None
+
+    def age_ordinal(self):
+        return None
+
+    def create_k_fold(self):
+        return None
+
+    def accuracy_by_classfier(self):
+        return None

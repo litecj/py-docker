@@ -1,10 +1,12 @@
 from titanic.model.dataset import Dataset
-from titanic.model.service import Service
 
 import matplotlib.pyplot as plt
-from matplotlib import font_manager, rc
+# from matplotlib import font_manager, rc
 import seaborn as sns
-rc('font', family = font_manager.FontProperties(fname='C:/Windows/Fonts/H2GTRE.ttf').get_name())
+
+from titanic.model.service import TitanicService
+
+# rc('font', family = font_manager.FontProperties(fname='C:/Windows/Fonts/H2GTRE.ttf').get_name())
 
 '''
 Titanic's features
@@ -13,10 +15,10 @@ PassengerId,Survived,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
 
 class Plot (object):
     dataset = Dataset()
-    service = Service()
+    service = TitanicService()
 
     def __init__(self):
-        self.entity = self.service.new_model('train.csv') # object is dataframe # entity = df
+        self.entity = self.service.new_model('../train.csv') # object is dataframe # entity = df
 
     def show_draw_survived_dead(self):
         this = self.entity

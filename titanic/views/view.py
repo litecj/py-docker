@@ -1,27 +1,19 @@
 from titanic.model.dataset import Dataset
-from titanic.model.service import Service
+from titanic.model.service import TitanicService
 
 
-class View (object):
+class TitanicView(object):
     dataset = Dataset()
-    service = Service()
+    service = TitanicService()
 
-    def modeling(self,train, test):
-        service = self.service
-        this = self.preprocessing(train,test)
-        print(f'The Type of This is {type(this.train)}')
-        print(f'The head of Train is\n{this.train.head(2)}')
-        print(f'The head of Train is\n{this.test.head(2)}')
-
-    def preprocessing(self,train,test) -> object:
-        service = self.service
-        this = self.dataset
-        this.train = service.new_model(train)
-        this.test = service.new_model(test)
-
+    def modeling(self):
+        this = self.service.preprocessing()
         return this
 
+    def preprocessing(self) -> object:
+        service = self.service
+        this = self.dataset
+        this.train = service.new_model("train")
+        this.test = service.new_model("test")
+        return this
 
-if __name__ == '__main__':
-    view = View()
-    view.modeling('train.csv','test.csv')
