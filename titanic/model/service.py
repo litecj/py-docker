@@ -1,6 +1,8 @@
 import pandas as pd
 
 from titanic.model.dataset import Dataset
+from sklearn.model_selection import KFold, cross_val_score
+from sklearn.ensemble import RandomForestClassifier
 
 class TitanicService(object):
 
@@ -12,18 +14,25 @@ class TitanicService(object):
         # this.fname = payload
         return pd.read_csv(f"/data/{payload}.csv")
 
+
     def count_survived_dead(self, ):
         return []
 
-    def create_train(self):
-        return None
+    @staticmethod
+    def create_train(this) -> object:
+        return this.train.drop('Survived', axis=1)
 
-    def create_label(self):
-        return None
+    @staticmethod
+    def create_label(this)-> object:
+        return this.train['Survived']
 
-    def drop_feature(self, *feature):
+    @staticmethod
+    def drop_feature(this, *feature)-> object:
+        for i in feature:
+            this.train = this.train.drop([i],axis=1)
+            this.test = this.test.drop([i],axis=1)
         return None
-
+    # PassengerId,Survived,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
     def embarked_nominal(self):
         return None
 
