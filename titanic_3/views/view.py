@@ -1,8 +1,10 @@
 import pandas as pd
 
-from titanic.model.dataset import Dataset
-from titanic.model.service import TitanicService
+
 from sklearn.ensemble import RandomForestClassifier
+
+from titanic_3.model.dataset import Dataset
+from titanic_3.model.service import TitanicService
 
 
 class TitanicView(object):
@@ -32,8 +34,7 @@ class TitanicView(object):
         return this
 
     def learning(self,this):
-        print(f'Algorithmic Accuracy of Scikit Learn : {self.service.accuracy_by_classfier(this)}')
-        #print(f'SKLearn Algorithmic Accuracy is : {self.service.accuracy_by_classfier(this)}')
+        print(f'SKLearn Algorithmic Accuracy is : {self.service.accuracy_by_classfier(this)}')
 
     def submit(self):
         this = self.modeling()
@@ -50,4 +51,3 @@ class TitanicView(object):
         print(f'3-1.Top Row Of Train is{this.train.head(3)},\n3-2.Top Row Of Test is{this.test.head(3)}')
         print(f'4-1.Null Count Of Train is{this.train.isnull().sum()},'
               f'\n4-2.Null Count Of Test is{this.test.isnull().sum()}')
-

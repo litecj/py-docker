@@ -8,7 +8,7 @@ class TitanicViewTest(unittest.TestCase):
     mock = TitanicView()
 
     def test_modeling(self):
-        this = self.mock.preprocessing()
+        self.mock.modeling()
 
 
     '''def test_preprocessing(self) :
@@ -17,6 +17,9 @@ class TitanicViewTest(unittest.TestCase):
         this.train = service.new_model("train")
         this.test = service.new_model("test")
         return this'''
+
+    # def test_submit(self):
+    #     self.mock.submit()
 
 if __name__ == '__main__':
     unittest.main
