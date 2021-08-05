@@ -37,10 +37,19 @@ class Weather (object):
         result = pd.concat([self.df_a, self.df_b, self.df_c, self.df_d, self.df_e, self.df_f, self.df_g, self.df_h, self.df_i], axis = 1)
         print(result.head(3))
         # print(type(self.df_b))
+        for i in result:
+            self.df = self.df.drop(['day'],['hour'],axis=1)
 
-    def data_merge(self):
-        # frames = [self.df_a, self.df_b, self.df_c, self.df_d, self.df_e, self.df_f, self.df_g, self.df_h, self.df_i]
-        result = pd.concat([self.df_a, self.df_b], axis = 1)
-        # result = pd.merge(self.df_a, self.df_b)
+
+
+    # def data_merge(self):
+    #     # frames = [self.df_a, self.df_b, self.df_c, self.df_d, self.df_e, self.df_f, self.df_g, self.df_h, self.df_i]
+    #     result = pd.concat([self.df_a, self.df_b], axis = 1)
+    #     # result = pd.merge(self.df_a, self.df_b)
 
         # print(result.head(3))
+
+    def drop_feature(self, *feature)-> object:
+        for i in feature:
+            self.df = self.df.drop([i],axis=1)
+        return self.df
