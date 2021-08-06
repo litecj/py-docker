@@ -24,20 +24,24 @@ class Weather (object):
         ls2 = ['한림읍','애월읍','구좌읍', '조천읍','한경면','추자면','우도면','일도1동','일도2동','이도1동','이도2동','삼도1동',
                '삼도2동','용담1동','용담2동','건입동','화북동','삼양동','봉개동','아라동','오라동','연동','노형동','외도동','이호동','도두동']
         ls3 = ['대정읍/마라도포함','남원읍','성산읍','안덕면','표선면','송산동','정방동','중앙동','천지동','효돈동','영천동','동홍동','서홍동','대륜동','대천동','중문동','예래동']
-        ls4 = ['202101', '202102','202103','202104','202105','202106','202107','202012','202011','202010']
-        for j in ls2:
-            name = j
-            for i in ls:
-                print(name)
-                test1 = pd.read_csv(f'../data/weather/{name}_{i}_202101_202107.csv', encoding='UTF-8')
-                test2 = pd.DataFrame(test1, columns = test1.keys())
-                if i == '기온':
-                    test3.append(test2)
-                else:
-                    test3.append(test2.iloc[:, [2]])
-            result = pd.concat(test3, axis=1)
-            print(result)
-            result.to_csv(f'../data/제주시_{name}_날씨.csv', sep=',', na_rep='NaN')
+        ls4 = ['2021','2020','2019','2018']
+        ls5 = ['01','02','03','04','05','06','07','08','09','10','11','12']
+        for h in ls4:
+            for a in ls5:
+                for j in ls2:
+                    name = j
+                    for i in ls:
+                        print(name)
+                        test1 = pd.read_csv(f'../data/weather/{name}_{i}_{h}{a}_{h}{a}.csv', encoding='UTF-8')
+                        test2 = pd.DataFrame(test1, columns = test1.keys())
+                        test2 = test2.assign(Month=[a],Year=[h])
+                        if i == '기온':
+                            test3.append(test2)
+                        else:
+                            test3.append(test2.iloc[:, [2]])
+                        result = pd.concat(test3, axis=1)
+                        print(result)
+                        result.to_csv(f'../data/제주시_{name}_날씨.csv', sep=',', na_rep='NaN')
 
         # data_a = pd.read_csv('../data/weather/한림읍_기온_202101_202107.csv', encoding='UTF-8')
         # self.df_a = pd.DataFrame(data_a, columns = data_a.keys())
